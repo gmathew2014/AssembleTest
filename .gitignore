@@ -1,0 +1,5 @@
+#Compiled Assemble files
+dist
+
+# Dependency directory
+node_modules
