@@ -14,24 +14,41 @@ module.exports = function (grunt) {
       }
     },
 
+    /* assemble templating */
     assemble: {
       options: {
+        collections: [
+          {
+            name: 'post',
+            sortby: 'posted',
+            sortorder: 'descending'
+          },
+          {
+            name: 'gallery',
+            sortby: 'posted',
+            sortorder: 'descending'
+          }
+        ],
+        helpers: './src/bonnet/helpers/**/*.js',
         layout: 'page.hbs',
         layoutdir: './src/bonnet/layouts/',
-        partials: './src/bonnet/partials/**/*.hbs'
+        partials: './src/bonnet/partials/**/*'
       },
       posts: {
-        files: [{
-          cwd: './src/content/',
-          dest: './dist/',
-          expand: true,
-          src: ['**/*.hbs', '!_pages/**/*.hbs']
-        }, {
-          cwd: './src/content/_pages/',
-          dest: './dist/',
-          expand: true,
-          src: '**/*.hbs'
-        }]
+        files: [
+          {
+            cwd: './src/content/',
+            dest: './dist/',
+            expand: true,
+            src: ['**/*.hbs', '!_pages/**/*.hbs']
+          },
+          {
+            cwd: './src/content/_pages/',
+            dest: './dist/',
+            expand: true,
+            src: '**/*.hbs'
+          }
+        ]
       }
     }
   });
