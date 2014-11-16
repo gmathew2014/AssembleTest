@@ -32,7 +32,12 @@ module.exports = function (grunt) {
         helpers: './src/bonnet/helpers/**/*.js',
         layout: 'page.hbs',
         layoutdir: './src/bonnet/layouts/',
-        partials: './src/bonnet/partials/**/*'
+        partials: './src/bonnet/partials/**/*',
+        flatten: true,
+        plugins: ['assemble-contrib-permalinks','assemble-middleware-permalinks', 'other/plugins/*'],
+        permalinks: {
+          structure: ':year/:month/:day/:foo/:basename'
+        }
       },
       posts: {
         files: [
@@ -46,7 +51,7 @@ module.exports = function (grunt) {
             cwd: './src/content/_pages/',
             dest: './dist/',
             expand: true,
-            src: '**/*.hbs'
+            src: '**/*.hbs',
           }
         ]
       }
